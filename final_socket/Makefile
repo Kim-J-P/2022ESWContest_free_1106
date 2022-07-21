@@ -1,1 +1,1 @@
-gcc -o server_clone iot_server_clone1.c -lpthread
+gcc -o server final_server.c -lpthread

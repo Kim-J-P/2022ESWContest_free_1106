@@ -209,7 +209,7 @@ int main(int argc, char* argv[])
 						write(clnt_sock, msg, strlen(msg));
 
 						pthread_create(t_id + i, NULL, clnt_connection, (void*)(client_info + i));
-						pthread_create(send + i, NULL, send_to_client, (void*)(client_info+i));
+						pthread_create(send + i, NULL, send_to_client, (void*)(client_info + i));
 						pthread_detach(t_id[i]);
 						pthread_detach(send[i]);
 						break;
@@ -275,10 +275,10 @@ void* clnt_connection(void* arg)
 		single_send = client_info->fd;
 		strcpy(clid, client_info->id);
 
-		sprintf(strBuff, "msg : [%s->server] %s", msg_info.from, pArray[1]);
+		sprintf(strBuff, "msg : [%s->%s] %s", msg_info.from,msg_info.to, pArray[1]);
 		log_file(strBuff);
 		//send_msg(&msg_info, first_client_info);
-		//send_to_client(&single_send, clid);
+		//send_to_client(&client_info);
 	}
 
 	close(client_info->fd);
@@ -306,16 +306,29 @@ void* send_to_client(void* arg) {
 	char name_msg[150];
 	char msg[100];
 
+	//t index = client_info->index;
+	//ar to_msg[50];
+	char* pArray[5]={0};
+	char* pToken;
+	//ar strBuff[130] = {0};
+	//G_INFO msg_info;
+	//IENT_INFO* first_client_info;
+	//ar clid[10];
+	//rst_client_info = (CLIENT_INFO*)((void)client_info - (void*)(sizeof(CLIENT_INFO)* index));
+
+
 	FD_ZERO(&initset);
 	FD_SET(STDIN_FILENO, &initset);
 
+	int count = 0;
 	while(1){
 		memset(msg, 0, sizeof(msg));
-		name_msg[0] = '\0';
+		memset(name_msg, 0, sizeof(name_msg));	
+		//name_msg[0] = '\0';
 		tv.tv_sec=1;
 		tv.tv_usec = 0;
 		newset = initset;
-		ret=select(STDIN_FILENO+1, &newset, NULL, NULL, &tv);
+		ret=select(STDIN_FILENO, &newset, NULL, NULL, &tv);
 		if(FD_ISSET(STDIN_FILENO, &newset)){
 			fgets(msg, 100, stdin);
 			if(!strncmp(msg, "quit\n", 5)){
@@ -326,17 +339,38 @@ void* send_to_client(void* arg) {
 				strcat(name_msg, msg);
 			}
 			
-			if(write(*sock, name_msg, strlen(name_msg))<=0){
-				*sock =-1;
-				return NULL;
-			}
+			//intf("%c\n", msg[0]);
+			
+			//nt cl = atoi(&msg[0]);
+			//printf("%c\n", *(clnt->id));
+			//printf("%d\n", cl);
+			//for(int j=0; j<cl;j++){
+			//	printf("1번\n");
+		//		printf("%d\n", atoi(clnt->id));
+				//strcpy(clnt->id,&msg[0]);
+			//	if(atoi(clnt->id)==atoi(&msg[0])){
+			//		printf("2번\n");
+					
+			if(atoi(&msg[0])<4)
+				printf("retry\n");
+			else if(write(atoi(&msg[0]), name_msg, strlen(name_msg))<=0){
+						*sock =-1;
+						return NULL;
+					}
+						
+			//	}
+				
+			//}
+				
 		}
-
-		if(ret == 0){
-			if(*sock == -1)
-				return NULL;
-		}
+			//printf("%s\n", msg);
 	}
+
+	if(ret == 0){
+		if(*sock == -1)
+			return NULL;
+	}
+	
 }
 
 
