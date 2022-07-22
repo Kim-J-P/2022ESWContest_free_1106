@@ -88,14 +88,8 @@ void loop() {
   angleFiX = (ALPHA * angleGyX) + ((1-ALPHA) * angleAcX);
   angleFiY = (ALPHA * angleGyY) + ((1-ALPHA) * angleAcY);
 
-  Serial.print("gyro X : ");
-  Serial.print(angleGyX);
-  Serial.print("\t\t");
   Serial.print("Filterd X : ");
   Serial.print(angleFiX);
-  Serial.print("\t\t");
-  Serial.print("gyro Y : ");
-  Serial.print(angleGyY);
   Serial.print("\t\t");
   Serial.print("Filterd Y : ");
   Serial.println(angleFiY);
