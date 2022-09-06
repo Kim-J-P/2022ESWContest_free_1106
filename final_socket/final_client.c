@@ -1,5 +1,3 @@
-/* author : KSH */
-/* 서울기술 교육센터 IoT */
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -53,7 +51,7 @@ int main(int argc, char *argv[])
 	pthread_create(&snd_thread, NULL, send_msg, (void *)&sock);
 
 	pthread_join(snd_thread, &thread_return);
-	//	pthread_join(rcv_thread, &thread_return);
+	
 
 	close(sock);
 	return 0;
@@ -129,19 +127,7 @@ void * recv_msg(void * arg)
 		name_msg[str_len] = 0;
 		fputs(name_msg, stdout);
 
-		/*   	pToken = strtok(name_msg,"[:]");
-			i = 0;
-			while(pToken != NULL)
-			{
-			pArray[i] =  pToken;
-			if(i++ >= ARR_CNT)
-			break;
-			pToken = strtok(NULL,"[:]");
-			}
-
-		//		printf("id:%s, msg:%s,%s,%s,%s\n",pArray[0],pArray[1],pArray[2],pArray[3],pArray[4]);
-		printf("id:%s, msg:%s\n",pArray[0],pArray[1]);
-		*/
+		
 	}
 }
 
