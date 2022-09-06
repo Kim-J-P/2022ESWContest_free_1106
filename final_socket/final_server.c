@@ -69,24 +69,7 @@ int main(int argc, char* argv[])
 	char* pArray[ARR_CNT] = { 0 };
 	char msg[BUF_SIZE];
 
-	/*	CLIENT_INFO client_info[MAX_CLNT] = {{0,-1,"","1","PASSWD"}, \
-		{0,-1,"","2","PASSWD"},  {0,-1,"","3","PASSWD"}, \
-		{0,-1,"","4","PASSWD"},  {0,-1,"","5","PASSWD"}, \
-		{0,-1,"","6","PASSWD"},  {0,-1,"","7","PASSWD"}, \
-		{0,-1,"","8","PASSWD"},  {0,-1,"","9","PASSWD"}, \
-		{0,-1,"","10","PASSWD"},  {0,-1,"","11","PASSWD"}, \
-		{0,-1,"","12","PASSWD"},  {0,-1,"","13","PASSWD"}, \
-		{0,-1,"","14","PASSWD"},  {0,-1,"","15","PASSWD"}, \
-		{0,-1,"","16","PASSWD"},  {0,-1,"","17","PASSWD"}, \
-		{0,-1,"","18","PASSWD"},  {0,-1,"","19","PASSWD"}, \
-		{0,-1,"","20","PASSWD"},  {0,-1,"","21","PASSWD"}, \
-		{0,-1,"","22","PASSWD"},  {0,-1,"","23","PASSWD"}, \
-		{0,-1,"","24","PASSWD"},  {0,-1,"","25","PASSWD"}, \
-		{0,-1,"","26","PASSWD"},  {0,-1,"","27","PASSWD"}, \
-		{0,-1,"","28","PASSWD"},  {0,-1,"","29","PASSWD"}, \
-		{0,-1,"","30","PASSWD"},  {0,-1,"","31","PASSWD"}, \
-		{0,-1,"","32","PASSWD"}};
-*/
+	
 
 	if (argc != 2) { //포트번호를 입력하지 않은 경우
 		//iot_server 실행 시   ./iot_server 5000 으로 5000번 포트로 서버를 여는데 이때 argc = 2로 화이트 스페이스로 갯수가 구분됨
@@ -338,17 +321,7 @@ void* send_to_client(void* arg) {
 				strcat(name_msg, msg);
 			}
 			
-			//intf("%c\n", msg[0]);
 			
-			//nt cl = atoi(&msg[0]);
-			//printf("%c\n", *(clnt->id));
-			//printf("%d\n", cl);
-			//for(int j=0; j<cl;j++){
-			//	printf("1번\n");
-		//		printf("%d\n", atoi(clnt->id));
-				//strcpy(clnt->id,&msg[0]);
-			//	if(atoi(clnt->id)==atoi(&msg[0])){
-			//		printf("2번\n");
 					
 			if(atoi(&msg[0])<4)
 				printf("retry\n");
@@ -357,12 +330,10 @@ void* send_to_client(void* arg) {
 						return NULL;
 					}
 						
-			//	}
-				
-			//}
+			
 				
 		}
-			//printf("%s\n", msg);
+		
 	}
 
 	if(ret == 0){
@@ -374,65 +345,6 @@ void* send_to_client(void* arg) {
 
 
 
-//void send_msg(MSG_INFO* msg_info, CLIENT_INFO* first_client_info)
-//{
-//	int i = 0;
-//	//int *sock = (int*)arg;
-//	int str_len;
-//	int ret;
-//	fd_set initset, newset;
-//	struct timeval tv;
-//	char name_msg[10];
-//	
-//	FD_ZERO(&initset);
-//	FD_SET(STDIN_FILENO, &initset);
-//
-
-//	if (!strcmp(msg_info->to, "ALLMSG"))
-//	{
-//		for (i = 0; i < MAX_CLNT; i++)
-//			if ((first_client_info + i)->fd != -1){
-//				
-//				if(read((first_client_info+i)->fd, msg_info->msg, msg_info->len)!=0)
-//					write((first_client_info + i)->fd, msg_info->msg, msg_info->len);
-//				else{
-//					memset(msg,0,sizeof(msg));	
-//					name_msg[0]='\0';
-//					tv.tv_sec=1;
-//					tv.tv_usec=0;
-//					newset=initset;
-//					ret=select(STDIN_FILENO+1, &newset, NULL, NULL, &tv);
-//					
-//					strcat(name_msg, "[ALLMSG");
-//					strcat(name_msg, msg);
-//					write((first_client_info+i)->fd, name_msg, strlen(name_msg));
-//				}
-//			}
-//	}
-//	else if (!strcmp(msg_info->to, "IDLIST"))
-//	{
-//		char* idlist = (char*)malloc(ID_SIZE * MAX_CLNT);
-//		msg_info->msg[strlen(msg_info->msg) - 1] = '\0';
-//		strcpy(idlist, msg_info->msg);
-//
-//		for (i = 0; i < MAX_CLNT; i++)
-//		{
-//			if ((first_client_info + i)->fd != -1)
-//			{
-//				strcat(idlist, (first_client_info + i)->id);
-//				strcat(idlist, " ");
-//			}
-//		}
-//		strcat(idlist, "\n");
-//		write(msg_info->fd, idlist, strlen(idlist));
-//		free(idlist);
-//	}
-//	else
-//		for (i = 0; i < MAX_CLNT; i++)
-//			if ((first_client_info + i)->fd != -1)
-//				if (!strcmp(msg_info->to, (first_client_info + i)->id))
-//					write((first_client_info + i)->fd, msg_info->msg, msg_info->len);
-//}
 
 void error_handling(char* msg)
 {
