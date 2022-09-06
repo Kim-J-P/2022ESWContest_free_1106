@@ -259,8 +259,7 @@ void* clnt_connection(void* arg)
 
 		sprintf(strBuff, "msg : [%s->%s] %s", msg_info.from,msg_info.to, pArray[1]);
 		log_file(strBuff);
-		//send_msg(&msg_info, first_client_info);
-		//send_to_client(&client_info);
+
 	}
 
 	close(client_info->fd);
@@ -288,15 +287,9 @@ void* send_to_client(void* arg) {
 	char name_msg[150];
 	char msg[100];
 
-	//t index = client_info->index;
-	//ar to_msg[50];
 	char* pArray[5]={0};
 	char* pToken;
-	//ar strBuff[130] = {0};
-	//G_INFO msg_info;
-	//IENT_INFO* first_client_info;
-	//ar clid[10];
-	//rst_client_info = (CLIENT_INFO*)((void)client_info - (void*)(sizeof(CLIENT_INFO)* index));
+
 
 
 	FD_ZERO(&initset);
