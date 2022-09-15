@@ -53,7 +53,7 @@ void setup()
   Serial.println("Starting connection to server...");
   // if you get a connection, report back via serial
   if (client.connect(server, 5000)) {
-    client.println("25:PASSWD");
+    client.println("Arduino:PASSWD");
     //client.println();
     Serial.println("Connected to server");
   }
