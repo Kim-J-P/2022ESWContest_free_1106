@@ -16,13 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     timer->start(1000);
     time_now();
 
-    //Label Text Changes on Page 4 & 5
-    QTimer *timer_dot = new QTimer(this);
-    connect(timer_dot, SIGNAL(timeout()), this, SLOT(dotChanges()));
-    timer_dot->start(1000);
-    dotChanges();   
-
-    // Socket
+    // Socket & DB Connection
     pSockets = new Sockets(this);
 
     // Page 1
@@ -43,6 +37,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Page 5
     connect(ui->pPBBack_RtnCam, SIGNAL(clicked()), this, SLOT(BackToPage1_CamRtn()));
+
+    // Page 6
+    connect(ui->pPBBack_RtnFail, SIGNAL(clicked()), this, SLOT(BackToPage1_RtnFail()));
 }
 
 MainWindow::~MainWindow()
@@ -62,24 +59,9 @@ void MainWindow::time_now()
     ui->pLCDClock3->display(text);
     ui->pLCDClock4->display(text);
     ui->pLCDClock5->display(text);
+    ui->pLCDClock6->display(text);
+
 }
-
-// for Page 4 & Page 5
-void MainWindow::dotChanges()
-{
-    QTime time = QTime::currentTime();
-    QString str;
-
-    if (time.second() % 4 == 1) str.append(".");
-    else if (time.second() % 4 == 2) str.append("..");
-    else if (time.second() % 4 == 3) str.append("...");
-    else if (time.second() % 4 == 0) str.clear();
-
-    ui->pLDotCamReg->setText(str);
-    ui->pLDotCamRtn->setText(str);
-}
-
-// Socket
 
 // Page 1 ==================================================
 
@@ -100,7 +82,7 @@ void MainWindow::MoveToRtnPage()
 bool MainWindow::RegisterRoom()
 {
     QMessageBox::StandardButton RegYesNo;
-    RegYesNo = QMessageBox::question(this, "Register Process", "Are you sure you want to register?", QMessageBox::Yes | QMessageBox::No);
+    RegYesNo = QMessageBox::question(this, "Registration Process", "Are you sure you want to register?", QMessageBox::Yes | QMessageBox::No);
 
     if (RegYesNo == QMessageBox::Yes)
     {
@@ -118,7 +100,7 @@ int MainWindow::Room1Reg()
 
     if (RegisterRoom() == true)
     {
-        if (ui->pPBRoom1->styleSheet() == "color: rgb(255, 100, 100)")
+        if (ui->pPBRoom1->styleSheet() == "background-color: rgb(157, 5, 104)")
         {
             QMessageBox::warning(this, "Registration Error", "This room has already registered. Please choose the other room.", QMessageBox::Ok);
             return -1;
@@ -130,22 +112,35 @@ int MainWindow::Room1Reg()
 
             // Socket Connect here
             pSockets->doConnect();
+            pSockets->slotConnected();
+            pSockets->processReg();
 
-            // Socket send data here ("ROOM 1")
-            pSockets->slotSend(1);
+            pSockets->slotSetFile("/home/team5/khm/workspace/FaceRegister/build/data/Register.json");
+            if (!pSockets->slotSendFile()) RegCount = -1;
+            else RegCount = 0;
 
-            // when received data from the other client
+            pSockets->slotSendDoor("Room1\n");
+            pSockets->slotDisconnected();
 
-            ui->pPBRoom1->setStyleSheet("color: rgb(255, 100, 100)");
-            roomCnt -= 1;
+            // After Face ID Registration
+            if (RegCount == -1)
+            {
+                QMessageBox::warning(this, "WARNING : Registration Failure", "Cannot find Face ID. Face ID Registration Failed.", QMessageBox::Ok);
+                ui->Page4CamReg->close();
+                ui->Page2Register->show();
+            }
+            else if (RegCount == 0)
+            {
+                ui->pPBRoom1->setStyleSheet("background-color: rgb(157, 5, 104)");
+                roomCnt -= 1;
 
-            if (roomCnt == 1) ui->pLRoomsLetter->setText("room");
-            else ui->pLRoomsLetter->setText("rooms");
+                if (roomCnt == 1) ui->pLRoomsLetter->setText("room");
+                else ui->pLRoomsLetter->setText("rooms");
 
-            ui->pLNumberOfRooms->display(roomCnt);
+                ui->pLNumberOfRooms->display(roomCnt);
 
-            return 1;
-
+                return 1;
+            }
         }
     }
     else return 0;
@@ -155,7 +150,7 @@ int MainWindow::Room2Reg()
 {
     if (RegisterRoom() == true)
     {
-        if (ui->pPBRoom2->styleSheet() == "color: rgb(255, 100, 100)")
+        if (ui->pPBRoom2->styleSheet() == "background-color: rgb(157, 5, 104)")
         {
             QMessageBox::warning(this, "Registration Error", "This room has already registered. Please choose the other room.", QMessageBox::Ok);
             return -1;
@@ -165,23 +160,37 @@ int MainWindow::Room2Reg()
             ui->Page2Register->close();
             ui->Page4CamReg->show();
 
-            // Socket Connect here
+            // Socket Connection here
             pSockets->doConnect();
+            pSockets->slotConnected();
+            pSockets->processReg();
 
-            //slotSocketSendData();
-            pSockets->slotSend(2);
+            pSockets->slotSetFile("/home/team5/khm/workspace/FaceRegister/build/data/Register.json");
+            if (!pSockets->slotSendFile()) RegCount = -2;
+            else RegCount = 0;
 
-            // when received data from the other client
+            pSockets->slotSendDoor("Room2\n");
+            pSockets->slotDisconnected();
 
-            ui->pPBRoom2->setStyleSheet("color: rgb(255, 100, 100)");
-            roomCnt -= 1;
+            // After Face ID Registration
+            if (RegCount == -2)
+            {
+                QMessageBox::warning(this, "WARNING : Registration Failure", "Cannot find Face ID. Face ID Registration Failed.", QMessageBox::Ok);
+                ui->Page4CamReg->close();
+                ui->Page2Register->show();
+            }
+            else if (RegCount == 0)
+            {
+                ui->pPBRoom1->setStyleSheet("background-color: rgb(157, 5, 104)");
+                roomCnt -= 1;
 
-            if (roomCnt == 1) ui->pLRoomsLetter->setText("room");
-            else ui->pLRoomsLetter->setText("rooms");
+                if (roomCnt == 1) ui->pLRoomsLetter->setText("room");
+                else ui->pLRoomsLetter->setText("rooms");
 
-            ui->pLNumberOfRooms->display(roomCnt);
+                ui->pLNumberOfRooms->display(roomCnt);
 
-            return 2;
+                return 2;
+            }
         }
     }
     else return 0;
@@ -201,15 +210,8 @@ int MainWindow::ReturnRoom(void)
     RtnYesNo = QMessageBox::question(this, "Return Process", "Are you sure you want to return your room?", QMessageBox::Yes|QMessageBox::No);
     if (RtnYesNo == QMessageBox::Yes)
     {
-        if (ui->pCBRoomsList->currentText() == "Room 1")
-        {
-            return 1;
-        }
-        else if (ui->pCBRoomsList->currentText() == "Room 2")
-        {
-            return 2;
-        }
-        else ReturnRoomFailed();
+        if (ui->pCBRoomsList->currentText() == "Room 1") return 1;
+        else if (ui->pCBRoomsList->currentText() == "Room 2") return 2;
     }
     else if (RtnYesNo == QMessageBox::No) return -1;
 
@@ -221,58 +223,89 @@ void MainWindow::ReturnRoomCheck()
     int temp = ReturnRoom();
     if (temp == 1)
     {
-        if (ui->pPBRoom1->styleSheet() == "color: rgb(255, 100, 100)")
+        if (ui->pPBRoom1->styleSheet() == "background-color: rgb(157, 5, 104)")
         {
-            ui->Page3Return->close();
-            ui->Page5CamRtn->show();
-
             // Socket Connect here
             pSockets->doConnect();
+            pSockets->slotConnected();
+            pSockets->processRtn();
 
-            // Socket send data here ("ROOM 2")
-            pSockets->slotSend(1);
+            pSockets->slotSetFile("/home/team5/khm/workspace/data/result.txt");
+            pSockets->slotSendFile();
 
-            // After Face ID Authentication
+            pSockets->slotSendDoor("\nRoom1\n");
 
-            // Socket Disconnect
-            ui->pPBRoom1->setStyleSheet("color: rgb(0, 0, 0)");
-            roomCnt += 1;
+            pSockets->slotDisconnected();
 
-            if (roomCnt == 1) ui->pLRoomsLetter->setText("room");
-            else ui->pLRoomsLetter->setText("rooms");
+            if (pSockets->slotReadResult() == "Correct")
+            {
+                qDebug() << "Face ID Authentication Success";
+                ui->Page3Return->close();
+                ui->Page5CamRtn->show();
 
-            ui->pLNumberOfRooms->display(roomCnt);
+                // After Face ID Authentication
+                ui->pPBRoom1->setStyleSheet("background-color: rgb(0, 130, 135)");
+                roomCnt += 1;
 
+                if (roomCnt == 1) ui->pLRoomsLetter->setText("room");
+                else ui->pLRoomsLetter->setText("rooms");
+
+                ui->pLNumberOfRooms->display(roomCnt);
+            }
+
+            else if (pSockets->slotReadResult() == "Wrong")
+            {
+                qDebug() << "Face ID Authentication Failure";
+                ui->Page3Return->close();
+                ui->Page6ReturnFailed->show();
+            }
         }
         else ReturnRoomFailed();
     }
     else if (temp == 2)
     {
-        if (ui->pPBRoom2->styleSheet() == "color: rgb(255, 100, 100)")
+        if (ui->pPBRoom2->styleSheet() == "background-color: rgb(157, 5, 104)")
         {
-            ui->Page3Return->close();
-            ui->Page5CamRtn->show();
-
-            // Socket Connect here
+            // Socket Connection here
             pSockets->doConnect();
+            pSockets->slotConnected();
+            pSockets->processRtn();
 
-            // Socket send data here ("ROOM 2")
-            pSockets->slotSend(2);
+            pSockets->slotSetFile("/home/team5/khm/workspace/data/result.txt");
+            pSockets->slotSendFile();
 
-            // After Face ID Authentication
+            pSockets->slotSendDoor("\nRoom2\n");
 
-            // Socket Disconnect
-            ui->pPBRoom2->setStyleSheet("color: rgb(0, 0, 0)");
-            roomCnt += 1;
+            pSockets->slotDisconnected();
 
-            if (roomCnt == 1) ui->pLRoomsLetter->setText("room");
-            else ui->pLRoomsLetter->setText("rooms");
+            if (pSockets->slotReadResult() == "Correct")
+            {
+                qDebug() << "Face ID Authentication Success";
+                ui->Page3Return->close();
+                ui->Page5CamRtn->show();
 
-            ui->pLNumberOfRooms->display(roomCnt);
+                // After Face ID Authentication
+                ui->pPBRoom2->setStyleSheet("background-color: rgb(0, 130, 135)");
+                roomCnt += 1;
+
+                if (roomCnt == 1) ui->pLRoomsLetter->setText("room");
+                else ui->pLRoomsLetter->setText("rooms");
+
+                ui->pLNumberOfRooms->display(roomCnt);
+            }
+
+            else if (pSockets->slotReadResult() == "Wrong")
+            {
+                qDebug() << "Face ID Authentication Failure";
+                ui->Page3Return->close();
+                ui->Page6ReturnFailed->show();
+            }
+
         }
         else ReturnRoomFailed();
     }
 }
+
 
 void MainWindow::ReturnRoomFailed()
 {
@@ -291,9 +324,6 @@ void MainWindow::BackToPage1_CamReg()
 {
     ui->Page4CamReg->close();
     ui->Page1Welcome->show();
-
-    // Disconnect
-    pSockets->slotDisconnected();
 }
 
 // Page 5 ==================================================
@@ -302,7 +332,12 @@ void MainWindow::BackToPage1_CamRtn()
 {
     ui->Page5CamRtn->close();
     ui->Page1Welcome->show();
+}
 
-    // Disconnect
-    pSockets->slotDisconnected();
+// Page 6 ==================================================
+
+void MainWindow::BackToPage1_RtnFail()
+{
+    ui->Page6ReturnFailed->close();
+    ui->Page1Welcome->show();
 }
