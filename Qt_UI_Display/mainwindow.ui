@@ -2,41 +2,113 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>700</width>
-    <height>500</height>
+    <width>720</width>
+    <height>600</height>
    </rect>
+  </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>1000</width>
+     <height>856</height>
+    </size>
+   </property>
    <widget class="QStackedWidget" name="stackedWidget">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>661</width>
-      <height>421</height>
+      <x>40</x>
+      <y>40</y>
+      <width>640</width>
+      <height>480</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:0, stop:0 rgba(183, 248, 255, 255), stop:1 rgba(255, 255, 255, 255));</string>
+    </property>
+    <property name="locale">
+     <locale language="Korean" country="NorthKorea"/>
+    </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="Page1Welcome">
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="verticalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>611</width>
-        <height>371</height>
+        <x>0</x>
+        <y>10</y>
+        <width>631</width>
+        <height>461</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="2,0,2,0,1,0,2,0,2,0,2,0">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="2,1,3,1,2,1,2,1,4,1,2,1">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,3">
          <item>
@@ -46,7 +118,7 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>138</width>
+             <width>40</width>
              <height>20</height>
             </size>
            </property>
@@ -62,14 +134,14 @@
         </layout>
        </item>
        <item>
-        <spacer name="verticalSpacer_14">
+        <spacer name="verticalSpacer_17">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>15</height>
+           <height>13</height>
           </size>
          </property>
         </spacer>
@@ -94,7 +166,7 @@
            <property name="font">
             <font>
              <family>Ubuntu</family>
-             <pointsize>35</pointsize>
+             <pointsize>40</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -130,7 +202,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>10</height>
+           <height>13</height>
           </size>
          </property>
         </spacer>
@@ -155,7 +227,7 @@
            <property name="font">
             <font>
              <family>Ubuntu</family>
-             <pointsize>17</pointsize>
+             <pointsize>25</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -191,7 +263,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>10</height>
+           <height>13</height>
           </size>
          </property>
         </spacer>
@@ -228,7 +300,7 @@
            <property name="font">
             <font>
              <family>Ubuntu</family>
-             <pointsize>14</pointsize>
+             <pointsize>20</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -245,7 +317,7 @@
           <widget class="QLabel" name="label_8">
            <property name="font">
             <font>
-             <pointsize>14</pointsize>
+             <pointsize>20</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -274,14 +346,14 @@
         </layout>
        </item>
        <item>
-        <spacer name="verticalSpacer_17">
+        <spacer name="verticalSpacer_14">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>10</height>
+           <height>15</height>
           </size>
          </property>
         </spacer>
@@ -312,10 +384,14 @@
            <property name="font">
             <font>
              <family>Ubuntu</family>
-             <pointsize>18</pointsize>
+             <pointsize>26</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(18, 127, 145);
+color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
             <string>Register</string>
@@ -346,10 +422,14 @@
            <property name="font">
             <font>
              <family>Ubuntu</family>
-             <pointsize>18</pointsize>
+             <pointsize>26</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(18, 127, 145);
+color: rgb(255, 255, 255);</string>
            </property>
            <property name="text">
             <string>Return</string>
@@ -379,31 +459,13 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>15</height>
+           <height>20</height>
           </size>
          </property>
         </spacer>
        </item>
        <item>
-        <widget class="QLabel" name="label_3">
-         <property name="font">
-          <font>
-           <family>Ubuntu Mono</family>
-           <pointsize>26</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Trillion Airline</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,10,1">
          <item>
           <spacer name="horizontalSpacer_11">
            <property name="orientation">
@@ -417,26 +479,70 @@
            </property>
           </spacer>
          </item>
+         <item>
+          <widget class="QLabel" name="label_3">
+           <property name="font">
+            <font>
+             <family>Ubuntu Mono</family>
+             <pointsize>28</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Trillion Airline</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_12">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
         </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="Page2Register">
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="verticalLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>29</x>
-        <y>19</y>
-        <width>601</width>
-        <height>371</height>
+        <x>0</x>
+        <y>10</y>
+        <width>631</width>
+        <height>461</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="2,0,2,1,4,1,2,1">
+      <layout class="QVBoxLayout" name="verticalLayout_2" stretch="2,1,3,1,6,1,3">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,3">
          <item>
-          <spacer name="horizontalSpacer_12">
+          <spacer name="horizontalSpacer_13">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -465,19 +571,19 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>10</height>
+           <height>20</height>
           </size>
          </property>
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="2,1">
+        <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="3,1">
          <item>
           <widget class="QLabel" name="label_4">
            <property name="font">
             <font>
              <family>Ubuntu</family>
-             <pointsize>16</pointsize>
+             <pointsize>19</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -488,7 +594,120 @@
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_13">
+          <spacer name="horizontalSpacer_14">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_11">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_9">
+         <item>
+          <spacer name="horizontalSpacer_17">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pPBRoom1">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Ubuntu</family>
+             <pointsize>32</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(0, 130, 135);</string>
+           </property>
+           <property name="text">
+            <string> Room 1 </string>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_15">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pPBRoom2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Ubuntu</family>
+             <pointsize>32</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(0, 105, 112);</string>
+           </property>
+           <property name="text">
+            <string> Room 2 </string>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_16">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -516,119 +735,9 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="1,2,1,2,1">
+        <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="3,1">
          <item>
-          <spacer name="horizontalSpacer_15">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pPBRoom1">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="font">
-            <font>
-             <family>Ubuntu</family>
-             <pointsize>20</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Room 1</string>
-           </property>
-           <property name="checkable">
-            <bool>false</bool>
-           </property>
-           <property name="autoDefault">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_14">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="pPBRoom2">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="font">
-            <font>
-             <family>Ubuntu</family>
-             <pointsize>20</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Room 2</string>
-           </property>
-           <property name="checkable">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_16">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="4,1">
-         <item>
-          <spacer name="horizontalSpacer_17">
+          <spacer name="horizontalSpacer_31">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -651,10 +760,13 @@
            <property name="font">
             <font>
              <family>Ubuntu</family>
-             <pointsize>18</pointsize>
+             <pointsize>26</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(114, 159, 207);</string>
            </property>
            <property name="text">
             <string>BACK</string>
@@ -663,33 +775,20 @@
          </item>
         </layout>
        </item>
-       <item>
-        <spacer name="verticalSpacer_11">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
       </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="Page3Return">
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="verticalLayoutWidget_5">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>20</y>
-        <width>601</width>
-        <height>371</height>
+        <x>0</x>
+        <y>10</y>
+        <width>631</width>
+        <height>461</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="2,0,2,1,8">
+      <layout class="QVBoxLayout" name="verticalLayout_7" stretch="2,1,2,1,8">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="1,3">
          <item>
@@ -722,7 +821,7 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>10</height>
+           <height>13</height>
           </size>
          </property>
         </spacer>
@@ -734,7 +833,7 @@
            <property name="font">
             <font>
              <family>Ubuntu</family>
-             <pointsize>16</pointsize>
+             <pointsize>19</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
@@ -773,7 +872,7 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="1,2,1,2,1">
+        <layout class="QHBoxLayout" name="horizontalLayout_13" stretch="1,3,1,3,1">
          <item>
           <spacer name="horizontalSpacer_22">
            <property name="orientation">
@@ -813,10 +912,13 @@
              <property name="font">
               <font>
                <family>Ubuntu</family>
-               <pointsize>20</pointsize>
+               <pointsize>26</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(255, 255, 255);</string>
              </property>
              <item>
               <property name="text">
@@ -859,7 +961,7 @@
           </spacer>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,3,1,3,1">
+          <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,3,2,2,1">
            <item>
             <spacer name="verticalSpacer_6">
              <property name="orientation">
@@ -884,13 +986,23 @@
              <property name="font">
               <font>
                <family>Ubuntu</family>
-               <pointsize>18</pointsize>
+               <pointsize>26</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
              </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(18, 127, 145);
+color: rgb(255, 255, 255);</string>
+             </property>
              <property name="text">
               <string>Return</string>
+             </property>
+             <property name="default">
+              <bool>false</bool>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
              </property>
             </widget>
            </item>
@@ -918,10 +1030,13 @@
              <property name="font">
               <font>
                <family>Ubuntu</family>
-               <pointsize>18</pointsize>
+               <pointsize>26</pointsize>
                <weight>75</weight>
                <bold>true</bold>
               </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(114, 159, 207);</string>
              </property>
              <property name="text">
               <string>BACK</string>
@@ -944,7 +1059,7 @@
           </layout>
          </item>
          <item>
-          <spacer name="horizontalSpacer_21">
+          <spacer name="horizontalSpacer_32">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -962,16 +1077,16 @@
      </widget>
     </widget>
     <widget class="QWidget" name="Page4CamReg">
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="verticalLayoutWidget_3">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>20</y>
-        <width>601</width>
-        <height>371</height>
+        <x>0</x>
+        <y>10</y>
+        <width>631</width>
+        <height>461</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_8" stretch="2,3,2,3,2">
+      <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,1,4,1,2">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="1,3">
          <item>
@@ -981,8 +1096,8 @@
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>98</width>
-             <height>38</height>
+             <width>40</width>
+             <height>20</height>
             </size>
            </property>
           </spacer>
@@ -1010,7 +1125,7 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_15" stretch="2,4,1,2">
+        <layout class="QHBoxLayout" name="horizontalLayout_15" stretch="1,4,1">
          <item>
           <spacer name="horizontalSpacer_25">
            <property name="orientation">
@@ -1026,33 +1141,25 @@
          </item>
          <item>
           <widget class="QLabel" name="label_6">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="font">
             <font>
              <family>Ubuntu</family>
-             <pointsize>18</pointsize>
+             <pointsize>20</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
            <property name="text">
-            <string>FaceID Registration is in progress</string>
+            <string>FaceID Registration Success!</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="pLDotCamReg">
-           <property name="font">
-            <font>
-             <pointsize>18</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
@@ -1079,13 +1186,13 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>78</height>
+           <height>40</height>
           </size>
          </property>
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_16" stretch="3,1">
+        <layout class="QHBoxLayout" name="horizontalLayout_16" stretch="1,1,1">
          <item>
           <spacer name="horizontalSpacer_26">
            <property name="orientation">
@@ -1110,15 +1217,31 @@
            <property name="font">
             <font>
              <family>Ubuntu</family>
-             <pointsize>18</pointsize>
+             <pointsize>26</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(114, 159, 207);</string>
+           </property>
            <property name="text">
-            <string>BACK</string>
+            <string>HOME</string>
            </property>
           </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_21">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -1126,16 +1249,16 @@
      </widget>
     </widget>
     <widget class="QWidget" name="Page5CamRtn">
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="verticalLayoutWidget_4">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>20</y>
-        <width>601</width>
-        <height>371</height>
+        <x>0</x>
+        <y>10</y>
+        <width>631</width>
+        <height>461</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_10" stretch="2,3,2,3,2">
+      <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1,1,4,1,2">
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_17" stretch="1,3">
          <item>
@@ -1161,20 +1284,20 @@
         </layout>
        </item>
        <item>
-        <spacer name="verticalSpacer_9">
+        <spacer name="verticalSpacer_10">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>58</height>
+           <height>40</height>
           </size>
          </property>
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_18" stretch="1,3,1,1">
+        <layout class="QHBoxLayout" name="horizontalLayout_18" stretch="1,4,1">
          <item>
           <spacer name="horizontalSpacer_29">
            <property name="orientation">
@@ -1193,30 +1316,16 @@
            <property name="font">
             <font>
              <family>Ubuntu</family>
-             <pointsize>16</pointsize>
+             <pointsize>19</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
            <property name="text">
-            <string>FaceID Authentication is in progress</string>
+            <string>Face ID Authentication Success!</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="pLDotCamRtn">
-           <property name="font">
-            <font>
-             <pointsize>18</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string/>
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
@@ -1236,9 +1345,12 @@
         </layout>
        </item>
        <item>
-        <spacer name="verticalSpacer_10">
+        <spacer name="verticalSpacer_9">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
          </property>
          <property name="sizeHint" stdset="0">
           <size>
@@ -1249,7 +1361,7 @@
         </spacer>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_19" stretch="3,1">
+        <layout class="QHBoxLayout" name="horizontalLayout_19" stretch="1,1,1">
          <item>
           <spacer name="horizontalSpacer_30">
            <property name="orientation">
@@ -1274,15 +1386,242 @@
            <property name="font">
             <font>
              <family>Ubuntu</family>
-             <pointsize>18</pointsize>
+             <pointsize>26</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(114, 159, 207);</string>
+           </property>
+           <property name="text">
+            <string>HOME</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_33">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Page6ReturnFailed">
+     <widget class="QWidget" name="verticalLayoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>621</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_8" stretch="1,1,2,2,1,2">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_20" stretch="1,3">
+         <item>
+          <spacer name="horizontalSpacer_34">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLCDNumber" name="pLCDClock6">
+           <property name="digitCount">
+            <number>20</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_21">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_21" stretch="1,4,1">
+         <item>
+          <spacer name="horizontalSpacer_35">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_9">
+           <property name="font">
+            <font>
+             <pointsize>19</pointsize>
              <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>
            <property name="text">
-            <string>BACK</string>
+            <string>Different Face ID</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_36">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_22" stretch="1,6,1">
+         <item>
+          <spacer name="horizontalSpacer_37">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="font">
+            <font>
+             <pointsize>19</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Face ID Authentication Failure!</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_38">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_22">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_23" stretch="1,1,1">
+         <item>
+          <spacer name="horizontalSpacer_39">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pPBBack_RtnFail">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>26</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(114, 159, 207);</string>
+           </property>
+           <property name="text">
+            <string>HOME</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_40">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -1296,7 +1635,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>700</width>
+     <width>720</width>
      <height>22</height>
     </rect>
    </property>

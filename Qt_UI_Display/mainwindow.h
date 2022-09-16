@@ -13,6 +13,7 @@
 #include <QDebug>
 #include <QProcess>
 #include <QByteArray>
+#include <QThread>
 #include "sockets.h"
 
 QT_BEGIN_NAMESPACE
@@ -32,25 +33,19 @@ private:
     Sockets *pSockets;
 
     QString* text;
-    //QProcess* process;
-    QString strRoomNum;
-
-    //The Total Number of Rooms
-    int roomCnt = 2;
-
+    QString strRoomNum;    
     QMessageBox::StandardButton RegYesNo;
+
+    int roomCnt = 2;
+    int RegCount = 0;
 
 private slots:
 
     void time_now();
-    void dotChanges();
-
-    // Socket
-    //void slotSocketSendData();
 
     // Page 1
-    void MoveToRegPage();  // Move To Register Page
-    void MoveToRtnPage();  // Move to Return page
+    void MoveToRegPage();
+    void MoveToRtnPage();
 
     // Page 2
     bool RegisterRoom();
@@ -69,6 +64,9 @@ private slots:
 
     // Page 5
     void BackToPage1_CamRtn();
+
+    // Page 6
+    void BackToPage1_RtnFail();
 
 };
 #endif // MAINWINDOW_H
