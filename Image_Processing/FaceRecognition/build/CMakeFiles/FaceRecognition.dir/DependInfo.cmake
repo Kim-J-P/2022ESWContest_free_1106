@@ -6,7 +6,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/team5/khm/workspace/FaceRecognition/src/face.cpp" "/home/team5/khm/workspace/FaceRecognition/build/CMakeFiles/FaceRecognition.dir/src/face.cpp.o"
   "/home/team5/khm/workspace/FaceRecognition/src/main.cpp" "/home/team5/khm/workspace/FaceRecognition/build/CMakeFiles/FaceRecognition.dir/src/main.cpp.o"
-  "/home/team5/khm/workspace/FaceRecognition/src/setting.cpp" "/home/team5/khm/workspace/FaceRecognition/build/CMakeFiles/FaceRecognition.dir/src/setting.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

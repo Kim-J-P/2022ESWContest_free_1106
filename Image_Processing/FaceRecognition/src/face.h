@@ -1,13 +1,32 @@
 #pragma once
-#include "main.h"
+#include <iostream>
+#include <cmath>
+#include <librealsense2/rs.hpp>
+#include "opencv2/opencv.hpp"
+#include "opencv2/face.hpp"
+#include <thread>
+#include <queue>
+#include <vector>
+#include <fstream>
+/*
+#ifdef _DEBUG
+#pragma comment(lib, "opencv_world454d.lib")
 
+#else
+#pragma comment(lib, "opencv_world454.lib")
+#endif
+*/
+using namespace std;
+using namespace cv;
 using namespace cv::face;
 
-void drawPolyline(cv::Mat& frame, const vector<cv::Point2f>& landmarks, const int start, const int end, bool isClosed = false);
-void drawLandmarks(cv::Mat& frame, vector<cv::Point2f>& landmarks);
-static void calcDelaunayTriangles(cv::Rect rect, vector<cv::Point2f>& points, vector< vector<int> >& delaunayTri, cv::Mat img);
+Mat Video_streaming();
+Mat Image_preprocessing(Mat src);
+Mat Face_extract(CascadeClassifier face_cascade, Mat src, Mat src_gray);
+vector<Point2f> Landmark_extract(Mat face, vector<Rect> rect);
 void drawLandmarksPoints(cv::Mat& frame, vector<cv::Point2f>& landmarks);
-void warpTriangle(cv::Mat& frame_1, cv::Mat& result, vector<cv::Point2f>& t1, vector<cv::Point2f>& t2);
-vector<cv::Point2f> imgFaceDetection(cv::Mat frame, cv::CascadeClassifier faceCascade, cv::Ptr<Facemark> facemark);
-void processFaceSwap(cv::Mat& frame_1, cv::Mat& frame_2, cv::Mat& result, cv::Ptr<Facemark> facemark, cv::CascadeClassifier face_cascade);
-void pengsoo(cv::Mat frame, cv::Mat &result, cv::CascadeClassifier face_cascade);
+vector<double> cal_ratio(vector<Point2f>& point);
+double get_ratio(double distance1, double distance2);
+double pixels_distance(vector<Point2f>& point, int point1, int point2);
+String Compare_result(vector<double> value1, vector<double> value2);
+void Save_result(string com_result);
