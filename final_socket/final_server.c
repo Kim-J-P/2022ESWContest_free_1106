@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -48,7 +47,7 @@ void* clnt_connection(void* arg);
 void send_msg(MSG_INFO* msg_info, CLIENT_INFO* first_client_info);
 void error_handling(char* msg);
 void log_file(char* msgstr);
-void *send_to_client(void *arg);
+void *send_to_clnt(void *arg);
 
 int clnt_cnt = 0;
 pthread_mutex_t mutx;  //스레드 내에 변수를 선언할 때 사용, 그냥 형 이름인듯
@@ -69,7 +68,6 @@ int main(int argc, char* argv[])
 	char* pArray[ARR_CNT] = { 0 };
 	char msg[BUF_SIZE];
 
-	
 
 	if (argc != 2) { //포트번호를 입력하지 않은 경우
 		//iot_server 실행 시   ./iot_server 5000 으로 5000번 포트로 서버를 여는데 이때 argc = 2로 화이트 스페이스로 갯수가 구분됨
@@ -170,12 +168,6 @@ int main(int argc, char* argv[])
 						write(clnt_sock, msg, strlen(msg));
 						log_file(msg);
 						shutdown(clnt_sock, SHUT_WR);
-#if 0   //for MCU
-						shutdown(client_info[i].fd, SHUT_WR);
-						pthread_mutex_lock(&mutx);
-						client_info[i].fd = -1;
-						pthread_mutex_unlock(&mutx);
-#endif  
 						break;
 					}
 					if (!strcmp(client_info[i].pw, pArray[1]))
@@ -191,7 +183,7 @@ int main(int argc, char* argv[])
 						write(clnt_sock, msg, strlen(msg));
 
 						pthread_create(t_id + i, NULL, clnt_connection, (void*)(client_info + i));
-						pthread_create(send + i, NULL, send_to_client, (void*)(client_info + i));
+						pthread_create(send + i, NULL, send_to_clnt, (void*)(client_info + i));
 						pthread_detach(t_id[i]);
 						pthread_detach(send[i]);
 						break;
@@ -228,6 +220,7 @@ void* clnt_connection(void* arg)
 	MSG_INFO msg_info;
 	CLIENT_INFO* first_client_info;
 	char clid[10];
+	char message[100] = {0};
 
 	first_client_info = (CLIENT_INFO*)((void*)client_info - (void*)(sizeof(CLIENT_INFO) * index));
 	while (1)
@@ -257,9 +250,23 @@ void* clnt_connection(void* arg)
 		single_send = client_info->fd;
 		strcpy(clid, client_info->id);
 
-		sprintf(strBuff, "msg : [%s->%s] %s", msg_info.from,msg_info.to, pArray[1]);
-		log_file(strBuff);
+		if(!strcmp(msg_info.from, "Qt")){
+			int len, fd;
+			fd = open("room1.json", O_CREAT|O_RDWR|O_TRUNC, 0644);
 
+			while(1){
+				if(len=read(msg_info.fd, message, sizeof(message))!= 0){
+					write(fd, message, len);
+				}else
+					break;
+			}
+
+		}else
+			sprintf(strBuff, "msg : [%s->%s] %s", msg_info.from,msg_info.to, pArray[1]);
+
+
+
+		log_file(strBuff);
 	}
 
 	close(client_info->fd);
@@ -276,7 +283,7 @@ void* clnt_connection(void* arg)
 }
 
 
-void* send_to_client(void* arg) {
+void* send_to_clnt(void* arg) {
 	
 	CLIENT_INFO* clnt = (CLIENT_INFO *)arg;
 	int *sock = &(clnt->fd);
@@ -287,10 +294,10 @@ void* send_to_client(void* arg) {
 	char name_msg[150];
 	char msg[100];
 
+	
 	char* pArray[5]={0};
 	char* pToken;
-
-
+	
 
 	FD_ZERO(&initset);
 	FD_SET(STDIN_FILENO, &initset);
@@ -299,7 +306,6 @@ void* send_to_client(void* arg) {
 	while(1){
 		memset(msg, 0, sizeof(msg));
 		memset(name_msg, 0, sizeof(name_msg));	
-		//name_msg[0] = '\0';
 		tv.tv_sec=1;
 		tv.tv_usec = 0;
 		newset = initset;
@@ -314,19 +320,16 @@ void* send_to_client(void* arg) {
 				strcat(name_msg, msg);
 			}
 			
-			
 					
 			if(atoi(&msg[0])<4)
 				printf("retry\n");
 			else if(write(atoi(&msg[0]), name_msg, strlen(name_msg))<=0){
 						*sock =-1;
 						return NULL;
-					}
+			}
 						
-			
 				
 		}
-		
 	}
 
 	if(ret == 0){
