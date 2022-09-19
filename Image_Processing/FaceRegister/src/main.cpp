@@ -1,20 +1,22 @@
 #include "opencv2/opencv.hpp"
 #include <librealsense2/rs.hpp>
 #include <iostream>
+#include <vector>
+#include <algorithm>
 #include <thread>
 #include <queue>
 
 using namespace cv;
 using namespace std;
 
-String filename = "data/Register.json";
+String filename = "../../data/Register.json";
 
 void video_streaming();
 void face_register();
 
 int main()
 {
-	thread t1(&video_streaming);
+	thread t1(video_streaming);
 	t1.join();
 	
 	face_register();
@@ -67,28 +69,38 @@ void face_register()
     }
 	
 	//확인용========
-//	  Mat frame = imread("Son2.jpg",IMREAD_GRAYSCALE);
-//    if(frame.empty()){
-//		cerr << "Image load failed!"<<endl;
-//		return ;
-//	}
+	//Mat frame = imread("data/Son2.jpg",IMREAD_GRAYSCALE);
+    //	if(frame.empty()){
+	//	cerr << "Image load failed!"<<endl;
+	//return ;
+	//}
+	//imshow("a", frame);
+	//waitKey();
+	//destroyAllWindows();
 	//==============
 
-	Mat frame(Size(848,480), CV_8UC3, (void*)color_frame.get_data(), Mat::AUTO_STEP);
-	vector<Rect> faces;
-    classifier.detectMultiScale(frame, faces);		// 얼굴 검출
-	if( (faces.size()==0) || (faces.size()>=2) ){	// 너무 많이 검출되거나 검출안되면 다시
-		cerr << "Cant find face, try again !!" << endl;
-		return ;
-	}
-	
-	//rectangle(frame, faces.front(),Scalar(255,0,255),2);
+		vector<Rect> faces;
+		Mat frame_gray;
+		Mat frame(Size(848,480), CV_8UC3, (void*)color_frame.get_data(), Mat::AUTO_STEP);
+		cvtColor(frame, frame_gray, COLOR_BGR2GRAY);
+		equalizeHist(frame_gray,frame_gray);
+    	classifier.detectMultiScale(frame_gray, faces);		// 얼굴 검출
+		
+		if( (faces.size()==0) || (faces.size()>=2) ){		// 너무 많이 검출되거나 검출안되면 다시
+			cerr << "Cant find face, try again !!" << endl;
+			return;
+		}
+
+	Mat frame_temp = frame;
+	rectangle(frame_temp, faces.front(),Scalar(255,0,255),2);
+	imshow("a", frame_temp);
+	waitKey();
 
 	FileStorage fw(filename, FileStorage::WRITE);
 	if(!fw.isOpened()){
 		cerr<<"File open failed!"<<endl;
 		return ;
-	}
+	}else cerr << "Storage Success!" << endl;
 
 	fw << "data" << frame;	
 	fw.release();

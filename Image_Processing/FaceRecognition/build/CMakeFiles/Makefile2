@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /home/team5/khm/workspace/FaceRecognition/build
 CMakeFiles/FaceRecognition.dir/all:
 	$(MAKE) -f CMakeFiles/FaceRecognition.dir/build.make CMakeFiles/FaceRecognition.dir/depend
 	$(MAKE) -f CMakeFiles/FaceRecognition.dir/build.make CMakeFiles/FaceRecognition.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/team5/khm/workspace/FaceRecognition/build/CMakeFiles --progress-num=1,2,3,4 "Built target FaceRecognition"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/team5/khm/workspace/FaceRecognition/build/CMakeFiles --progress-num=1,2,3 "Built target FaceRecognition"
 .PHONY : CMakeFiles/FaceRecognition.dir/all
 
 # Include target in all.
@@ -76,7 +76,7 @@ all: CMakeFiles/FaceRecognition.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/FaceRecognition.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/team5/khm/workspace/FaceRecognition/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/team5/khm/workspace/FaceRecognition/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/FaceRecognition.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/team5/khm/workspace/FaceRecognition/build/CMakeFiles 0
 .PHONY : CMakeFiles/FaceRecognition.dir/rule

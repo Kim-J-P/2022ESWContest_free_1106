@@ -7,40 +7,32 @@
 #IncludeRegexTransform: 
 
 /home/team5/khm/workspace/FaceRecognition/src/face.cpp
-main.h
-/home/team5/khm/workspace/FaceRecognition/src/main.h
 face.h
 /home/team5/khm/workspace/FaceRecognition/src/face.h
 
 /home/team5/khm/workspace/FaceRecognition/src/face.h
-main.h
-/home/team5/khm/workspace/FaceRecognition/src/main.h
-
-/home/team5/khm/workspace/FaceRecognition/src/main.cpp
-main.h
-/home/team5/khm/workspace/FaceRecognition/src/main.h
-face.h
-/home/team5/khm/workspace/FaceRecognition/src/face.h
-setting.h
-/home/team5/khm/workspace/FaceRecognition/src/setting.h
-
-/home/team5/khm/workspace/FaceRecognition/src/main.h
 iostream
 -
 cmath
+-
+librealsense2/rs.hpp
 -
 opencv2/opencv.hpp
 /home/team5/khm/workspace/FaceRecognition/src/opencv2/opencv.hpp
 opencv2/face.hpp
 /home/team5/khm/workspace/FaceRecognition/src/opencv2/face.hpp
+thread
+-
+queue
+-
+vector
+-
+fstream
+-
 
-/home/team5/khm/workspace/FaceRecognition/src/setting.cpp
-setting.h
-/home/team5/khm/workspace/FaceRecognition/src/setting.h
-
-/home/team5/khm/workspace/FaceRecognition/src/setting.h
-main.h
-/home/team5/khm/workspace/FaceRecognition/src/main.h
+/home/team5/khm/workspace/FaceRecognition/src/main.cpp
+face.h
+/home/team5/khm/workspace/FaceRecognition/src/face.h
 
 /usr/local/include/opencv4/opencv2/calib3d.hpp
 opencv2/core.hpp

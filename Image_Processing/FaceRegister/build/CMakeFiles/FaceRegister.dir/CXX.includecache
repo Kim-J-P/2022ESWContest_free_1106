@@ -13,6 +13,10 @@ librealsense2/rs.hpp
 -
 iostream
 -
+vector
+-
+algorithm
+-
 thread
 -
 queue
